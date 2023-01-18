@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Background from './assets/background1.svg';
+import Background from '../../assets/background1.svg';
 
 export const Container = styled.div`
 background: url('${Background}');
@@ -26,7 +26,7 @@ border-radius: 61px 61px 0px 0px;
 padding: 50px 36px;
 display: flex;
 flex-direction: column;
-height:150vh;
+
 ` ;
 
 export const H1 = styled.h1 `
