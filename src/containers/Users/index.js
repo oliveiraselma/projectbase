@@ -1,24 +1,17 @@
 
-import React, { useState, useRef, useEffect } from 'react'
-import People from '../../assets/people.svg'
-import { Container, Image, ContainerItens, H1, InputLabel, Input, Button, User } from './styles';
+import React, { useState, useEffect } from 'react'
+import { useHistory} from 'react-router-dom'
+import Avatar from '../../assets/avatar.svg'
+import { Container, Image, ContainerItens, H1, Button, User  } from './styles';
 import Arrow from '../../assets/arrow.svg'
 import Trash from '../../assets/trash.svg'
 import axios from 'axios';
 
-function App() {
+function Users() {
   const [users, setUsers] = useState([]);
-  const inputName = useRef();
-  const inputAge = useRef();
+  const history = useHistory ()
 
-
-  async function addNewUser() {
-    const {data: newUsers} = await axios.post("http://localhost:3001/users", { 
-    name: inputName.current.value, 
-    age: inputAge.current.value,
-     });
-     setUsers ([...users, newUsers]);
-    }
+ 
 
     useEffect (() =>{
     async  function fetchUsers (){
@@ -35,23 +28,18 @@ setUsers (newUsers);
     const newUsers = users.filter((user) => user.id !== userId);
     setUsers(newUsers);
   }
-  
+  function goBackPage (){
+    history.push('/')
+  }
   return (
   
     <Container>
-      <Image alt='logo-imagem' src={People} />
+      <Image alt='logo-imagem' src={Avatar} />
       <ContainerItens>
-        <H1>Olá!</H1>
+        <H1>Usuários</H1>
+   
 
-        <InputLabel>Nome</InputLabel>
-        <Input ref={inputName} placeholder='Nome' />
-
-        <InputLabel>Idade</InputLabel>
-        <Input ref={inputAge} placeholder='Idade' />
-
-        <Button onClick={addNewUser}>
-          Cadastrar <img alt='seta' src={Arrow}></img></Button>
-
+        
         <ul>
           {users.map((user) => (
 
@@ -62,9 +50,13 @@ setUsers (newUsers);
             </User>
           ))}
         </ul>
+        <Button onClick = {goBackPage}>
+          <img alt='seta' src={Arrow}></img> Voltar
+          </Button>
+
       </ContainerItens>
 
     </Container>
   );
 }
-export default App;
+export default Users;

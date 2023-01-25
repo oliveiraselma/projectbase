@@ -1,13 +1,15 @@
 
-import React, { useState, useRef } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
+import { useHistory } from 'react-router-dom';
 import People from '../../assets/people.svg'
-import { Container, Image, ContainerItens, H1, InputLabel, Input, Button } from './styles';
+import { Container, Image, ContainerItens, H1, InputLabel, Input, Button} from './styles';
 import Arrow from '../../assets/arrow.svg'
 
 import axios from 'axios';
 
 function App() {
   const [users, setUsers] = useState([]);
+  const history = useHistory ();
   const inputName = useRef();
   const inputAge = useRef();
 
@@ -18,11 +20,12 @@ function App() {
     age: inputAge.current.value,
      });
      setUsers ([...users, newUsers]);
-    }
-
-   
-
     
+
+   history.push ('/usuarios')
+  }
+  
+  return (
   
     <Container>
       <Image alt='logo-imagem' src={People} />
@@ -42,6 +45,6 @@ function App() {
       </ContainerItens>
 
     </Container>
-  ;
+  );
 }
 export default App;

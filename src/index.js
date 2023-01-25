@@ -1,14 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-import Home from './containers/Home';
 import GlobalStyles from './globalStyles';
-
+import Routes from './routes'
 
 
 ReactDOM.render(
 <div>
-<Home /> <GlobalStyles />
+<Routes/> 
+<GlobalStyles />
   </div>, 
   document.getElementById('root')
   );

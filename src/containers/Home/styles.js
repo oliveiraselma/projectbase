@@ -80,6 +80,7 @@ display:flex;
 align-items: center;
 justify-content:center;
 gap:20px;
+margin-top: 130px;
 
 &:hover{
     opacity:0.8;
